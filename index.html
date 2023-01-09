@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Array of Objects</title>
+  </head>
+  <body>
+    <h1 style="color:blue"> List of Teams</h1>
+    <table id="tarray" style="text-align: center">
+      <tr>
+        <th>Team</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Win%</th>
+        <th>ptsFor</th>
+        <th>ptsAgainst</th>
+        <th>netPts</th>
+        <th>HammerEff</th>
+        <th>StealDef</th>
+        <th>netEff</th>
+      </tr>
+    </table>
+    <body>
+      <h1 style="color:blue">Games</h1>
+      <table id="garray" style="text-align: center">
+        <tr>
+          <th>GameID</th>
+          <th>Tournament</th>
+          <th>Date</th>
+          <th>team1</th>
+          <th>team2</th>
+          <th>ov/und</th>
+          <th>ovUndLine</th>
+          <th>T1straightodds</th>
+          <th>T2straightodds</th>
+          <th>T1lineodds</th>
+          <th>T2lineodds</th>
+          <th>ptsSprd</th>
+        </tr>
+      </table>
+
+      
+      <form id="myForm">
+        <h1> Get Bet Reccomendation </h1>
+        <label for="inputField">Enter Game</label><br>
+        <input type="text" id="gameName" name="inputField"><br>
+        <button type="submit" onclick="submitForm()">Submit</button>
+      </form>
+      
+  
+  </body>
+  <script type="module" src="ui.js"></script>
+</html>
+
+
