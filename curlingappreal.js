@@ -112,10 +112,6 @@ const game15 = new Game("game15","CADOPEN23","08/12/2023",Retornaz,Epping,"10.5"
 const game16 = new Game("game16","CADOPEN23","08/12/2023",Bottcher,Carruthers,"10.5","2.05","1.47","2.5","1.95","1.75","-1.5")
 
 
-// for (let i = 1; i < 17; i++) {
-//   gameHolder = game+i 
-//   console.log(overUnder(gameHolder))
-// }
 
 
 
@@ -175,7 +171,6 @@ else {
 
 function moneyLineEval(game){
 
-const favourite = Math.round((game.team2StraightOdds - game.team1StraightOdds)*100)/100;
 const lookAtWinPer = Math.round((game.team1.winPer - game.team2.winPer)*100)/100;
 const lookAtNetScore = Math.round((game.team1.netScore - game.team2.netScore)*100)/100;
 const lookAtNetEff = Math.round((game.team1.netEff - game.team2.netEff)*100)/100;
@@ -201,25 +196,17 @@ function evalAll(game){
   moneyLineEval(game);
 }
 
-evalAll(game1)
-evalAll(game2)
-evalAll(game3)
-evalAll(game4)
+// This loop runs the bet evaluation function for all of the games.  
+const firstGame = 3
+const lastGame = 7
 
-evalAll(game5)
-evalAll(game6)
-evalAll(game7)
-evalAll(game8)
+for (let i = firstGame ; i < (lastGame + 1); i++) {
+  gameHolder = `game${i}`
+  console.log(gameHolder)
+}
 
-evalAll(game9)
-//evalAll(game10)
-evalAll(game11)
-evalAll(game12)
 
-evalAll(game13)
-//evalAll(game14)
-evalAll(game15)
-evalAll(game16)
+
 
 
 
