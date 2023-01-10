@@ -120,22 +120,24 @@ function overUnder(game) {
   const part1 = (game.team1.ptsFor + game.team2.ptsAgainst) / 2;
   const part2 = (game.team2.ptsFor + game.team1.ptsAgainst) / 2;
   const expScore = (part1 + part2);
-  const scoreHedge = .4
+  const scoreHedge = 0.8
   const ouBet = "";
   const betAmt = "";
   const ouEdge =
-    scoreHedge*(Math.round(
-      ((expScore - game.ovUnd) / game.ovUnd + ((1 / game.ovUndLine) - 0.46)) * 100
+    (Math.round(
+      ((((expScore - game.ovUnd) / game.ovUnd) + ((1 / game.ovUndLine) - 0.54)) * 100
     ) / 100);
+
+ const adjEdge = return (ouEdge * scoreHedge);
 
   if (expScore >= game.ovUnd) {
     console.log(
-      `${game.gameId} ${game.team1.teamId}  vs ${game.team2.teamId} Bet the over game as ${expScore} is higher than ${game.ovUnd}  you should bet $ ${ouEdge * bankRoll} based on current bankroll. edge = ${ouEdge}`
+      `${game.gameId} ${game.team1.teamId}  vs ${game.team2.teamId} Bet the over game as ${expScore} is higher than ${game.ovUnd}  you should bet $ ${adjEdge * bankRoll} based on current bankroll. edge = ${adjEdge}`
     );
     
   } else {
     console.log(
-      `${game.gameId} ${game.team1.teamId}  vs ${game.team2.teamId} Bet the under because ${expScore} is lower than ${game.ovUnd} you should bet $ ${ouEdge * bankRoll} based on current bankroll. ${ouEdge}`
+      `${game.gameId} ${game.team1.teamId}  vs ${game.team2.teamId} Bet the under because ${expScore} is lower than ${game.ovUnd} you should bet $ ${adjEdge * bankRoll} based on current bankroll. ${adjEdge}`
     );
   }
   
@@ -202,6 +204,7 @@ for (let i = firstGame ; i < (lastGame + 1); i++) {
   gameHolder = `game${i}`
   console.log(evalAll(eval(gameHolder)))
 }
+
 
 
 
