@@ -197,8 +197,8 @@ function evalAll(game){
 }
 
 // This loop runs the bet evaluation function for all of the games.  
-const firstGame = 3
-const lastGame = 7
+const firstGame = 1
+const lastGame = 16
 
 for (let i = firstGame ; i < (lastGame + 1); i++) {
   gameHolder = `game${i}`
