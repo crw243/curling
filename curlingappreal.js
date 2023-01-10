@@ -187,8 +187,6 @@ console.log(`${game.gameId} MoneyLine ${game.team1.teamId} : is ${isFavourite(ga
 
 }
 
-
-
 //this calls all three of the game evaulation functions for each type of betting and takes the game as a param
 function evalAll(game){
   overUnder(game);
@@ -202,7 +200,7 @@ const lastGame = 16
 
 for (let i = firstGame ; i < (lastGame + 1); i++) {
   gameHolder = `game${i}`
-  console.log(gameHolder)
+  console.log(evalAll(eval(gameHolder)))
 }
 
 
