@@ -1,7 +1,7 @@
 //new app about curling
 
-const grossBankRoll = 1100;
-const kellyRatio = .25;
+const grossBankRoll = 1150;
+const kellyRatio = .5;
 const bankRoll = (kellyRatio * grossBankRoll) ;
 
 //This function is the default for creating a team object.
@@ -110,6 +110,14 @@ const game13 = new Game("game13","CADOPEN23","08/12/2023",Gushue,Gosgens,"10.5",
 const game14 = new Game("game14","CADOPEN23","08/12/2023",Schwaller,Whyte,"10.5","1.72","1.57","2.25","2.15","1.63","-1.5")
 const game15 = new Game("game15","CADOPEN23","08/12/2023",Retornaz,Epping,"10.5","1.9","1.3","3.2","1.68","2.05","-1.5")
 const game16 = new Game("game16","CADOPEN23","08/12/2023",Bottcher,Carruthers,"10.5","2.05","1.47","2.5","1.95","1.75","-1.5")
+const game17 = new Game("game17","CADOPEN23","11/01/2023",Homan,Scheidegger,"10.5","1.89","1.33","3.06","1.75","1.96","-1.5")
+const game18 = new Game("game18","CADOPEN23","11/01/2023",Peterson,Hasselborg,"10.5","1.9","2.18","1.61","1.55","2.3","1.5")
+const game19 = new Game("game19","CADOPEN23","11/01/2023",Fujisawa,Tirinzoni,"10.5","1.75","2.57","1.44","1.75","1.96","1.5")
+const game20 = new Game("game20","CADOPEN23","11/01/2023",Jaeggi,Keiser,"10.5","1.75","2.19","1.61","1.53","2.35","1.5")
+const game21 = new Game("game21","CADOPEN23","11/01/2023",Gim,Wrana,"10.5","1.75","1.36","2.9","1.72","2","-1.5")
+const game22 = new Game("game22","CADOPEN23","11/01/2023",Einarson,Lawes,"10.5","1.6","1.48","2.45","2.02","1.7","-1.5")
+const game23 = new Game("game23","CADOPEN23","11/01/2023",Constantini,Jones,"10.5","1.85","2.85","1.37","1.95","1.75","1.5")
+const game24 = new Game("game24","CADOPEN23","11/01/2023",Ackland,Ladouceur,"10.5","1.75","1.85","1.85","1.45","2.55","1.5")
 
 
 
@@ -120,15 +128,15 @@ function overUnder(game) {
   const part1 = (game.team1.ptsFor + game.team2.ptsAgainst) / 2;
   const part2 = (game.team2.ptsFor + game.team1.ptsAgainst) / 2;
   const expScore = (part1 + part2);
-  const scoreHedge = 0.8
+  const scoreHedge = 0.20
   const ouBet = "";
   const betAmt = "";
   const ouEdge =
     (Math.round(
       ((((expScore - game.ovUnd) / game.ovUnd) + ((1 / game.ovUndLine) - 0.54)) * 100
-    ) / 100);
+    ))) / 100
 
- const adjEdge = return (ouEdge * scoreHedge);
+ const adjEdge = (ouEdge * scoreHedge)
 
   if (expScore >= game.ovUnd) {
     console.log(
@@ -152,22 +160,25 @@ function lineEval(game) {
   const t2expNetScore = (Math.round((game.team2.netScore - game.team1.netScore )*100)/100);
   team1ptsSprd = (-1 * game.ptsSprd)
   team2ptsSprd = game.ptsSprd;
-  const team1linePer =   (game.team2LineOdds / (game.team1LineOdds +game.team2LineOdds));
- const team2linePer =  (game.team1LineOdds / (game.team1LineOdds +game.team2LineOdds));
+  const team1linePer =   Math.round(game.team2LineOdds / (game.team1LineOdds + game.team2LineOdds)*100)/100;
+  const team2linePer =  Math.round(game.team1LineOdds / (game.team1LineOdds +game.team2LineOdds)*100)/100;
 
  console.log(`${game.gameId}: ${game.team1.teamId} expected netscore ${t1expNetScore} vs points spread of ${team1ptsSprd}`)
 if (team1ptsSprd - t1expNetScore > lineDescrepancy){
-  console.log(`Take ${game.team2.teamId} with the line` )
+  console.log(`Take ${game.team2.teamId}, priced at ${team1linePer}` )
 }
 
 else if (team2ptsSprd - t2expNetScore > lineDescrepancy) {
 
-  console.log(`Take ${game.team1.teamId} with the line`)
+  console.log(`Take ${game.team1.teamId} with the line ${team2linePer}`)
 }
 
 else {
-  console.log(`The Pointspread gap is not big enough/not out of line `)
+  console.log(`The Pointspread gap is not big enough/not out of line`  )
 }
+
+console.log(team1linePer)
+console.log(team2linePer)
 
 }
 
@@ -197,8 +208,8 @@ function evalAll(game){
 }
 
 // This loop runs the bet evaluation function for all of the games.  
-const firstGame = 1
-const lastGame = 16
+const firstGame = 17
+const lastGame = 24
 
 for (let i = firstGame ; i < (lastGame + 1); i++) {
   gameHolder = `game${i}`
